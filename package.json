@@ -1,0 +1,77 @@
+{
+	"name": "dependency-check",
+	"displayName": "%displayName%",
+	"description": "%description%",
+	"version": "0.0.1",
+	"publisher": "craydent",
+	"license": "MIT",
+  "icon": "resources/icons/craydent.png",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "depcheck.clearCache",
+				"title": "Clear dependency cache"
+			},
+			{
+				"command": "depcheck.refreshCache",
+				"title": "Refresh dependency cache"
+			}
+		],
+		"configuration": {
+			"title": "Dependency Check",
+			"properties": {
+				"depcheck.moduleIgnoreList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"scope": "resource",
+					"default": [],
+					"description": "List of dependencies in the package.json to ignore. Typically used for modules required but not directly referenced in any files."
+				}
+			}
+		},
+		"colors": [
+			{
+				"id": "depcheck.unusedPackages",
+				"description": "Decorate dependencies in the package.json that are not being referenced in code (js, jsx, ts, tsx) files",
+				"defaults": {
+					"dark": "#3b3b3b55",
+					"light": "#3b3b3b55",
+					"highContrast": "#3b3b3b55"
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {
+		"craydent": "^0.9.0"
+	}
+}
