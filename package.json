@@ -5,7 +5,7 @@
 	"version": "0.0.1",
 	"publisher": "craydent",
 	"license": "MIT",
-  "icon": "resources/icons/craydent.png",
+	"icon": "resources/icons/icon128.png",
 	"engines": {
 		"vscode": "^1.37.0"
 	},
